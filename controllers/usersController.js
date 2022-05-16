@@ -13,7 +13,3 @@ export const createUser = (req, res) =>{
     res.send("User Added Successfully!");
 };
 
-module.exports = {
-    getUsers,
-    createUser
-}
