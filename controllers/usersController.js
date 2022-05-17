@@ -13,3 +13,7 @@ export const createUser = (req, res) =>{
     res.send("User Added Successfully!");
 };
 
+export const getSingleUser = (req, res) =>{
+    const singleUser = users.filter((user) => user.id === req.params.id);
+    res.send(singleUser);
+}
