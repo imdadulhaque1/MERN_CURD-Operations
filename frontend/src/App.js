@@ -3,10 +3,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Header from "./components/Header/Header";
-import About from './pages/About';
-import AddEdit from './pages/AddEdit';
+import About from './pages/About/About';
+import AddEdit from './pages/AddEdit/AddEdit';
 import Home from './pages/Home/Home';
-import View from './pages/View';
+import View from './pages/View/View';
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header/>
-        <ToastContainer />
+        <ToastContainer position="top-center"/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About}/>

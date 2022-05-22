@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Home.css";
 
 const Home = () => {
@@ -15,6 +16,16 @@ const Home = () => {
       setData(response.data)
     }
   }
+
+  const onDeleteUser = async(id) =>{
+    if(window.confirm("Are you sure to delete this user record?")){
+      const response = await axios.delete(`http://localhost:5000/user/${id}`);
+      toast.success(response.data);
+      getUsers();
+    }
+
+  }
+
   console.log(data)
 
   return (
@@ -24,7 +35,7 @@ const Home = () => {
             <tr>
               <th style={{textAlign: 'center'}} > No. </th>
               <th style={{textAlign: 'center'}} > Name </th>
-              <th style={{textAlign: 'center'}} > Contact </th>
+              <th style={{textAlign: 'center'}} > Contact No </th>
               <th style={{textAlign: 'center'}} > Email </th>
               <th style={{textAlign: 'center'}} > University Name </th>
               <th style={{textAlign: 'center'}} > Action </th>
@@ -43,7 +54,7 @@ const Home = () => {
                     <Link to={`/update/${item.id}`}>
                       <button className="btn btn-edit">Edit</button>
                     </Link>
-                    <button className="btn btn-delete">Delete</button>
+                    <button className="btn btn-delete" onClick={() => onDeleteUser(item.id)}>Delete</button>
                     <Link to={`/view/${item.id}`}>
                       <button className="btn btn-view">View</button>
                     </Link>
