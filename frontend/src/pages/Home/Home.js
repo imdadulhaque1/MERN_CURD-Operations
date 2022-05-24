@@ -20,8 +20,10 @@ const Home = () => {
   const onDeleteUser = async(id) =>{
     if(window.confirm("Are you sure to delete this user record?")){
       const response = await axios.delete(`http://localhost:5000/user/${id}`);
-      toast.success(response.data);
-      getUsers();
+      if(response.status ===200){
+        toast.success(response.data);
+        getUsers();
+      }
     }
 
   }
